@@ -1,0 +1,20 @@
+<?php
+return [
+    'faq_title' => 'Frequently asked questions',
+    'faq_description' => 'Here you can find answers to the most frequently asked questions',
+    'what_is_the_change' => 'What exactly is %name%?',
+    'the_change_description' => '%name% is a modern cryptocurrency exchange platform offering low fees. We provide the ability to trade a wide variety of currency pairs across multiple networks with minimal costs.',
+    'amount_difference_question' => 'Why does the amount I receive differ from the amount I sent?',
+    'amount_difference_answer' => 'Due to the high volatility of cryptocurrencies, exchange rates can fluctuate during the transaction process. This means the amount you receive may differ from the amount specified when placing the order. Such discrepancies can be both positive and negative and are driven by market changes, not by our service %name%. We strive to find the most advantageous exchange routes by selecting the best available rates at the time of your transaction.',
+    'exchange_duration_question' => 'How long does the exchange process take?',
+    'exchange_duration_answer' => 'Typically, the average transaction processing time on %name% is about 5 minutes, but it can vary from 2 to 15 minutes depending on the conditions.',
+    'exchange_fee' => 'What fees are applied during the exchange?',
+    'service_commission' => 'We charge a commission for each transaction, which is %fee%%.',
+    'crypto_laundering_question' => 'Are you involved in cryptocurrency laundering?',
+    'service_compliance' => 'No, our service strictly adheres to legal regulations and focuses solely on legitimate currency exchanges. We place particular emphasis on compliance with laws and ethical standards to ensure a safe and transparent environment for our clients.',
+    'transaction_after_canceled' => 'What happens if a transaction is confirmed after the order has been canceled?',
+    'transaction_resume' => 'After 2 hours, our service stops sending requests to check the wallet balance. To resume the exchange, you need to contact support, and we will promptly restore your order, after which the automatic coin exchange will occur.',
+    'no_answer_found' => 'Didn’t find the answer to your question?',
+    'contact_support' => 'Contact our team, and we will answer your question.',
+    'contact_us' => 'Contact us.',
+];

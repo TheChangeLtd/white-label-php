@@ -1,0 +1,74 @@
+@layer components {
+    .loader {
+        width: 30px;
+        aspect-ratio: 2;
+        --_g: no-repeat radial-gradient(circle closest-side, var(--content-secondary) 90%, transparent);
+        background:
+            var(--_g) 0% 50%,
+            var(--_g) 50% 50%,
+            var(--_g) 100% 50%;
+        background-size: calc(100% / 3) 50%;
+        animation: l3 1s infinite linear;
+    }
+    @keyframes l3 {
+        20% {
+            background-position:
+                0% 0%,
+                50% 50%,
+                100% 50%;
+        }
+        40% {
+            background-position:
+                0% 100%,
+                50% 0%,
+                100% 50%;
+        }
+        60% {
+            background-position:
+                0% 50%,
+                50% 100%,
+                100% 0%;
+        }
+        80% {
+            background-position:
+                0% 50%,
+                50% 50%,
+                100% 100%;
+        }
+    }
+
+    .checkbox {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        margin-top: 16px;
+    }
+    .checkbox input[type="checkbox"] {
+        display: none;
+    }
+    .checkbox .checkmark {
+        width: 20px;
+        height: 20px;
+        border: 1px solid var(--border-light);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background-color: var(--bg-secondary);
+        flex-shrink: 0;
+    }
+    .checkbox .checkmark:hover {
+        background-color: var(--state-ghost-hover);
+    }
+    .checkbox input[type="checkbox"]:checked + .checkmark {
+        background-color: var(--state-primary);
+    }
+    .checkbox input[type="checkbox"]:checked + .checkmark svg {
+        display: block;
+    }
+    .checkbox .checkmark svg {
+        display: none;
+    }
+}

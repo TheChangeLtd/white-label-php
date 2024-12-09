@@ -1,0 +1,77 @@
+@layer variables {
+    :root {
+        --font-primary: "Roboto", -apple-system, BlinkMacSystemFont, sans-serif; /* Main website font */
+
+        --state-primary: rgb(20, 75, 255); /* Brand and button color */
+        --state-primary-hover: rgb(32, 84, 255); /* Button hover color */
+        --state-primary-inverted: rgb(255, 255, 255); /* Content inside brand-color elements */
+        --state-ghost: rgba(100, 111, 147, 0); /* Theme switch */
+        --state-ghost-hover: rgba(100, 111, 147, 0.05); /* Hover effect for theme switch or coin selection */
+        --state-ghost-active: rgba(100, 111, 147, 0.07); /* Active state for theme or QR switch buttons */
+
+        --bg-primary: rgb(255, 255, 255); /* Elements background */
+        --bg-overflow: rgba(0, 0, 0, 0.25); /* Header overflow background */
+        --bg-secondary: rgb(247, 248, 250); /* Page body and Elements background */
+        --bg-tertiary: rgb(240, 241, 244); /* Footer, Contacts, and FAQ background */
+        --bg-component: rgb(255, 255, 255); /* Header language and theme switch background */
+        --bg-brand-subtle: rgba(20, 75, 255, 0.1); /* Status icon background */
+
+        --content-primary: rgb(31, 41, 56); /* Main text */
+        --content-secondary: rgba(100, 111, 147, 0.7); /* Secondary text */
+        --content-error: rgb(239, 68, 68); /* Errors */
+
+        --border-light: rgba(100, 111, 147, 0.1); /* Border color */
+
+        --shadow-light: rgba(0, 0, 0, 0.04); /* Light shadow fow elements*/
+        --shadow-medium: rgba(0, 0, 0, 0.08); /* Medium shadow for elements*/
+
+        --fill-svg-active: rgb(20, 75, 255); /* Active state for SVG icons */
+        --fill-svg-theme: rgb(159, 166, 191); /* Theme icon in the header */
+        
+        --bg-svg-main-left: rgb(31, 41, 56); /* Left side of main SVG */
+        --bg-svg-secondary-left: rgb(247, 248, 250); /* Left side of secondary SVG */
+        --bg-svg-main-right: rgb(20, 75, 255); /* Right side of main SVG */
+        --bg-svg-secondary-right: rgb(247, 248, 250); /* Right side of secondary SVG */
+
+        --base-green: rgba(34, 197, 94, 0.1); /* Success status for orders */
+        --base-red: rgba(239, 68, 68, 0.1); /* Error status for orders */
+
+        --header-height: 85px;
+    }
+    [data-theme="dark"] {
+        --font-primary: "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+
+        --state-primary: rgb(20, 75, 255);
+        --state-primary-hover: rgb(32, 84, 255);
+        --state-primary-inverted: rgb(255, 255, 255);
+        --state-ghost: rgba(100, 111, 147, 0);
+        --state-ghost-hover: rgba(100, 111, 147, 0.05);
+        --state-ghost-active: rgba(100, 111, 147, 0.07);
+
+        --bg-primary: rgba(31, 37, 55, 0.7);
+        --bg-overflow: rgba(0, 0, 0, 0.25);
+        --bg-secondary: rgb(12, 15, 21);
+        --bg-tertiary: rgb(7, 9, 13);
+        --bg-component: rgb(31, 37, 55);
+        --bg-brand-subtle: rgba(20, 75, 255, 0.1);
+
+        --content-primary: rgb(255, 255, 255);
+        --content-secondary: rgba(255, 255, 255, 0.7);
+        --content-error-color: rgb(239, 68, 68);
+
+        --border-light: rgba(181, 194, 242, 0.07);
+
+        --shadow-light: rgba(0, 0, 0, 0.04);
+        --shadow-medium: rgba(0, 0, 0, 0.08);
+
+        --fill-svg-active: rgb(20, 75, 255);
+        --bg-svg-main-left: rgb(99, 106, 132);
+        --bg-svg-secondary-left: rgb(12, 15, 21);
+        --bg-svg-main-right: rgb(20, 75, 255);
+        --bg-svg-secondary-right: rgb(12, 15, 21);
+        --fill-svg-theme: rgb(255, 255, 255);
+
+        --base-green: rgba(34, 197, 94, 0.1);
+        --base-red: rgba(239, 68, 68, 0.1);
+    }
+}

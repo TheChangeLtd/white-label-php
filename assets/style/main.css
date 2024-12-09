@@ -1,0 +1,7 @@
+@import url("/assets/style/fonts.css");
+@import url("/assets/style/normalize.css");
+@import url("/assets/style/variables.css");
+@import url("/assets/style/toastify.css");
+@import url("/assets/style/components.css");
+@import url("/assets/style/pages.css");
+@layer fonts, normalize, variables, toastify, components, theme;

@@ -1,0 +1,15 @@
+{
+    "name": "the-change/white-label",
+    "description": "White label currency exchanger by The Change Ltd",
+    "version": "1.0.1",
+    "require": {
+        "symfony/translation": "^6.0",
+        "endroid/qr-code": "^4.8",
+        "bramus/router": "^1.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}
