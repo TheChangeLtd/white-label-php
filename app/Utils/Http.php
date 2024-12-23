@@ -11,10 +11,12 @@ class Http
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+
+        $headers[] = "X-Forwarded-For: " . Network::getClientIP();
+        $headers[] = "Origin: " . Network::getClientOrigin();
+        
         switch (strtoupper($method)) {
             case 'POST':
-                $headers[] = "X-Forwarded-For: " . Network::getClientIP();
-
             case 'PUT':
             case 'PATCH':
                 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
@@ -33,8 +35,6 @@ class Http
                 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
                 break;
         }
-
-
 
         if (!empty($headers)) {
             curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);

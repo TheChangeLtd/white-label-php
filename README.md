@@ -29,7 +29,31 @@
 
 ## Installation
 
-Use XAMPP 5.6 for this project. You can download it from [here](https://www.apachefriends.org/download.html).
+1. **Use XAMPP 5.6 for this project.**  
+  You can download XAMPP 5.6 [here](https://www.apachefriends.org/download.html).
+
+2. **Install Composer and download dependencies.**  
+  - **Install Composer:**  
+    Download Composer from the [official website](https://getcomposer.org/download/) and follow the installation instructions for your operating system.
+  - **Download Dependencies:**  
+    After installing Composer, you need to install the project dependencies which will create the `vendor` folder.
+
+    - **For Unix/Linux/macOS (Bash):**
+      ```bash
+      cd path_to_your_project
+      composer install
+      ```
+
+    - **For Windows (Command Prompt or PowerShell):**
+      ```cmd
+      cd path_to_your_project
+      composer install
+      ```
+
+3. **Run the project using XAMPP.**  
+  - Place the project folder in the `htdocs` directory of your XAMPP installation.
+  - Start Apache through the XAMPP control panel.
+  - Open your browser and navigate to `http://localhost/your_project_folder`.
 
 ## Usage
 
@@ -51,8 +75,8 @@ Use XAMPP 5.6 for this project. You can download it from [here](https://www.apac
 - **Changing the Website Color Palette:**
   - In the `/assets/style/variables.css` file, you will find all the color variables and their descriptions.
 
-- **Modifying the Footer and Header:**
-  - Edit the corresponding entries in the `/config.php` file. All possible path options are located in `footer_menu`.
+- **Modifying the Header and Footer:**
+  - Edit the corresponding entries in the `/config.php` file. All possible path options are located in the `header_menu` and `footer_menu` accordingly.
 
 - **Configuring Contacts:**
   - In the `/config.php` file, you can also add your contacts, change the icon, and fill colors in the `contacts` entry.
@@ -71,12 +95,13 @@ API documentation is available at: [API Documentation](https://thechange.ltd/doc
 
 If you have any questions or suggestions, contact us:
 
-- **Email:** support@thechange.ltd
+- **Email:** [support@thechange.ltd](mailto:support@thechange.ltd)
 - **Telegram:** [@thechange_sup](https://t.me/thechange_sup)
 
 ## Additional Materials
 
-- **White Label:** Additional information can be found in [White Label](https://thechange.ltd/profile/white-label) after registering or logging into the website.
+- **White Label:** Additional information can be found at [White Label](https://thechange.ltd/white-label) page.
+- **Deployment:** Comprehensive guide on project setup and deployment can be found at the [profile](https://thechange.ltd/profile/white-label) after registering or logging into the website.
 
 ## License
 

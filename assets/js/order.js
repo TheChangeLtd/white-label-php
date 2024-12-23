@@ -7,7 +7,6 @@ $(document).ready(function () {
     const id = $('#order-id').val();
 
     async function getOrderData() {
-
         const orderResponse = await orderService.getOrderData(id);
 
         if (orderResponse.error) {
@@ -120,6 +119,14 @@ $(document).ready(function () {
     }
 
     $('body').on('click', '.order__details-copy-button', function () {
+        const $button = $(this);
+    
+        if ($button.prop('disabled')) {
+            return; 
+        }
+    
+        $button.prop('disabled', true);
+        
         const targetId = $(this).data('copy-target');
         const $targetElement = $(`#${targetId}`);
         if ($targetElement.length) {
@@ -127,15 +134,17 @@ $(document).ready(function () {
             textToCopy = textToCopy.trim().replace(/\s+/g, ' ');
             copyToClipboard(textToCopy);
 
-            const $button = $(this);
             const originalSvg = $button.html();
 
-            $button.html(`<svg width="20" height="20" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M4.99985 7.58545L9.59605 2.98926L10.3032 3.69636L4.99985 8.99965L1.81787 5.8177L2.52498 5.1106L4.99985 7.58545Z" fill="#646F93"/>
-</svg> `);
+            $button.html(`
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.99985 7.58545L9.59605 2.98926L10.3032 3.69636L4.99985 8.99965L1.81787 5.8177L2.52498 5.1106L4.99985 7.58545Z" fill="#646F93"/>
+                </svg> 
+            `);
 
             setTimeout(() => {
                 $button.html(originalSvg);
+                $button.prop('disabled', false);
             }, 2000);
         }
     });

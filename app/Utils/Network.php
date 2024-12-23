@@ -15,4 +15,16 @@ class Network
 
         return $_SERVER["REMOTE_ADDR"];
     }
+    public static function getClientOrigin() {
+        $scheme = 'http://';
+        if (
+            (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ||
+            ($_SERVER['SERVER_PORT'] ?? '') == 443
+        ) {
+            $scheme = 'https://';
+        }
+
+        $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+        return $scheme . $host;
+    }
 }

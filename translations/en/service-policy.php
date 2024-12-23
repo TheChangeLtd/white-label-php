@@ -19,7 +19,7 @@ return [
     'comissions_refund_4.2' => 'Our service applies a commission for each transaction, ranging from 0.2% to 1% depending on the exchange mode.',
     'liability' => 'Liability',
     'liability_5.1' => 'Please be aware that by sending funds of unclear origin, you assume all associated risks, including the possibility of losing such funds.',
-    'liability_5.2' => '5.2 We reserve the right to request information about the origin of funds and conduct a KYC (Know Your Customer) procedure at any time.',
+    'liability_5.2' => 'We reserve the right to request information about the origin of funds and conduct a KYC (Know Your Customer) procedure at any time.',
     'support' => 'Support and Issue Resolution',
     'support_6.1' => 'In case of technical issues or other difficulties during the exchange operation, we recommend contacting our support service immediately.',
     'service_rights' => 'Service Rights',

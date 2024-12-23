@@ -1,6 +1,6 @@
 <?php
 return [
-    'api_key' => 'sxBtZtedo9mZ43kbGxUBLIc',
+    'api_key' => '',
     'api_base_url' => 'https://api.thechange.ltd',
     'fee' => 1,
     'name' => 'White Label',
