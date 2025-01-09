@@ -81,42 +81,60 @@ $(document).ready(function () {
         });
     }
 
-    function startCountdownTimer() {
-        const $expirationTimeElement = $('#expiration-time');
-        if (!$expirationTimeElement.length) return;
-
-        const createdAt = $expirationTimeElement.data('created-at');
-        const createdAtDate = new Date(Number(createdAt));
-        if (isNaN(createdAtDate.getTime())) {
-            $expirationTimeElement.text('Ошибка времени');
+    function startCountdownTimer($element) {
+        const createdAt = $element.data('created-at');
+    
+        if (!createdAt) {
+            console.error('Ошибка: отсутствует data-created-at');
             return;
         }
-
+    
+        const createdAtDate = new Date(Number(createdAt));
+        if (isNaN(createdAtDate.getTime())) {
+            $element.text('Ошибка времени');
+            return;
+        }
+    
         const countdownDuration = 2 * 60 * 60 * 1000;
         const expirationDate = new Date(createdAtDate.getTime() + countdownDuration);
-
-        let timerInterval;
-
+    
         function updateTimer() {
             const now = new Date();
             const timeLeft = expirationDate - now;
-
+    
             if (timeLeft <= 0) {
-                $expirationTimeElement.text('00:00:00');
+                $element.text('00:00:00');
                 clearInterval(timerInterval);
                 return;
             }
-
+    
             const hours = Math.floor(timeLeft / (1000 * 60 * 60));
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            $expirationTimeElement.text(`${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
+    
+            $element.text(
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+            );
         }
-
+    
         updateTimer();
-        timerInterval = setInterval(updateTimer, 1000);
+        const timerInterval = setInterval(updateTimer, 1000);
     }
+
+    function observeCountdownElement() {
+        const observer = new MutationObserver(() => {
+            const $expirationTimeElement = $('#expiration-time');
+            if ($expirationTimeElement.length && $expirationTimeElement.data('created-at')) {
+                startCountdownTimer($expirationTimeElement);
+                observer.disconnect();
+            }
+        });
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    }
+    observeCountdownElement();
 
     $('body').on('click', '.order__details-copy-button', function () {
         const $button = $(this);
