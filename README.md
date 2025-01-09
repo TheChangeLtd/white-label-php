@@ -25,8 +25,6 @@
 
 - PHP 8.2 or greater
 
-### Usage Steps
-
 ## Installation
 
 1. **Use XAMPP 5.6 for this project.**  
