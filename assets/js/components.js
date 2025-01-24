@@ -1,13 +1,13 @@
 import { debounce } from './utils.js';
 import { watch, ref } from './reactive-system.js';
 
-function NetworkButton({ currency, network, emit }) {
+function NetworkButton({ currency, network, networkName, emit }) {
     return createElement('button', {
         class: 'exchange__form-network-option',
         onClick: (event) => {
             event.stopPropagation();
             if (emit) {
-                emit({ currency, network });
+                emit({ currency, network, networkName });
             }
         }
     }, [
@@ -20,11 +20,11 @@ function NetworkButton({ currency, network, emit }) {
             }
         }),
         createElement('div', { class: 'exchange__form-network-text' }, [`${currency} - `]),
-        createElement('div', { class: 'exchange__form-network-text' }, [network]),
+        createElement('div', { class: 'exchange__form-network-text' }, [networkName]),
     ]);
 }
 
-function CurrencyItem({ currency, network }) {
+function CurrencyItem({ currency, network, networkName}) {
     return createElement('div', {
         class: 'exchange__form-current-item'
     }, [
@@ -37,7 +37,7 @@ function CurrencyItem({ currency, network }) {
             }
         }),
         createElement('div', { class: 'exchange__form-network-text' }, [`${currency} - `]),
-        createElement('div', { class: 'exchange__form-network-text' }, [network])
+        createElement('div', { class: 'exchange__form-network-text' }, [networkName])
     ]);
 }
 function CurrencyButton({ currency, emit }) {
@@ -65,6 +65,7 @@ function CurrencyButton({ currency, emit }) {
         const button = NetworkButton({
             currency: currency.currency,
             network: network.network,
+            networkName: network.name,
             emit: (data) => {
                 if (emit) {
                     emit(data);

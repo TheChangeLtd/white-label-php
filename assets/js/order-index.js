@@ -14,8 +14,8 @@ if (!currenciesData || currenciesDataError) {
     errorToast(`${error.message || 'Unable to load currencies'}`);
 }
 
-const fromCurrency = ref({ currency: '', network: '' });
-const toCurrency = ref({ currency: '', network: '' });
+const fromCurrency = ref({ currency: '', network: '', networkName: '' });
+const toCurrency = ref({ currency: '', network: '', networkName: '' });
 const amount = ref();
 const minAmount = ref();
 const maxAmount = ref();
@@ -50,6 +50,7 @@ watch(
                     CurrencyItem({
                         currency: newFrom.currency,
                         network: newFrom.network,
+                        networkName: newFrom.networkName,
                     }),
                 fromContainer,
                 true
@@ -63,6 +64,7 @@ watch(
                     CurrencyItem({
                         currency: newTo.currency,
                         network: newTo.network,
+                        networkName: newTo.networkName,
                     }),
                 toContainer,
                 true
@@ -308,39 +310,55 @@ const debouncedAddressHandler = debounce(addressInputHandle, 300);
 $('#receive-address').on('input', debouncedAddressHandler);
 
 function initializeFromUrl() {
-    const defaultFrom = { currency: 'BTC', network: 'BTC' };
-    const defaultTo = { currency: 'BTC', network: 'BTC' };
+    const defaultFrom = { currency: 'BTC', network: 'BTC', networkName: 'BTC' };
+    const defaultTo = { currency: 'ETH', network: 'ETH', networkName: 'ERC20' };
     const defaultAmount = 1;
 
     const params = new URLSearchParams(window.location.search);
 
     const fromParam = params.get('from');
+    const fromNetworkNameParam = params.get('fromNetworkName');
     const toParam = params.get('to');
+    const toNetworkNameParam = params.get('toNetworkName');
     const amountParam = params.get('amount');
 
-    function parseCurrencyParam(param) {
+    function parseCurrencyParam(param, networkName) {
         if (!param) return null;
         const [currency, network] = param.split('-');
-        return { currency, network };
+        return { currency, network, networkName: networkName || '' };
     }
 
     amount.value = amountParam ? parseFloat(amountParam) : defaultAmount;
     $('#give-amount').val(amount.value);
 
     [fromCurrency.value, toCurrency.value] = [
-        fromParam ? parseCurrencyParam(fromParam) : defaultFrom,
-        toParam ? parseCurrencyParam(toParam) : defaultTo,
+        fromParam
+            ? parseCurrencyParam(fromParam, fromNetworkNameParam)
+            : defaultFrom,
+        toParam
+            ? parseCurrencyParam(toParam, toNetworkNameParam)
+            : defaultTo,
     ];
 }
+
 function updateUrlParams(from, to, amount) {
     const url = new URL(window.location);
 
-    if (from) url.searchParams.set('from', `${from.currency}-${from.network}`);
-    if (to) url.searchParams.set('to', `${to.currency}-${to.network}`);
-    if (amount !== undefined) url.searchParams.set('amount', amount);
+    if (from) {
+        url.searchParams.set('from', `${from.currency}-${from.network}`);
+        url.searchParams.set('fromNetworkName', from.networkName);
+    }
+    if (to) {
+        url.searchParams.set('to', `${to.currency}-${to.network}`);
+        url.searchParams.set('toNetworkName', to.networkName);
+    }
+    if (amount !== undefined) {
+        url.searchParams.set('amount', amount);
+    }
 
     window.history.pushState({}, '', url);
 }
+
 initializeFromUrl();
 
 function initializeCurrencies() {

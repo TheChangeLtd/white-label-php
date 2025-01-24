@@ -12,8 +12,8 @@ if (!currenciesData || currenciesDataError) {
     errorToast(`${error.message || 'Unable to load currencies'}`);
 }
 
-const fromCurrency = ref({ currency: 'BTC', network: 'BTC' });
-const toCurrency = ref({ currency: 'ETH', network: 'ETH' });
+const fromCurrency = ref({ currency: 'BTC', network: 'BTC', networkName: 'BTC' });
+const toCurrency = ref({ currency: 'ETH', network: 'ETH', networkName: 'ERC20' });
 const amount = ref(1);
 const minAmount = ref();
 const maxAmount = ref();
@@ -31,6 +31,7 @@ watch(
                     CurrencyItem({
                         currency: newFrom.currency,
                         network: newFrom.network,
+                        networkName: newFrom.networkName,
                     }),
                 fromContainer,
                 true
@@ -44,6 +45,7 @@ watch(
                     CurrencyItem({
                         currency: newTo.currency,
                         network: newTo.network,
+                        networkName: newTo.networkName,
                     }),
                 toContainer,
                 true
@@ -189,7 +191,8 @@ $('#reverse-currency').on('click', debouncedReverseHandler);
 
 $('.exchange__form-button').on('click', (event) => {
     event.stopPropagation();
-    window.location.href = `/order?from=${fromCurrency.value.currency}-${fromCurrency.value.network}&to=${toCurrency.value.currency}-${toCurrency.value.network}&amount=${amount.value}`
+    const url = `/order?from=${fromCurrency.value.currency}-${fromCurrency.value.network}&to=${toCurrency.value.currency}-${toCurrency.value.network}&amount=${amount.value}&fromNetworkName=${fromCurrency.value.networkName}&toNetworkName=${toCurrency.value.networkName}`;
+    window.location.href = url;
 });
 
 $(document).ready(() => {
