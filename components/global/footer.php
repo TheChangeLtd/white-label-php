@@ -10,7 +10,7 @@
         </a>
         <div class="footer__info-content">
             <div class="footer__copyright">
-                <p class="footer__text">© 2023-2024 <?php echo $translationService->trans('common.logo_name'); ?></p>
+                <p class="footer__text">© 2024-<?php echo date("Y"); ?> <?php echo $translationService->trans('common.logo_name'); ?></p>
             </div>
             <nav class="footer__nav">
                 <ul class="footer__nav-list">
