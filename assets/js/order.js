@@ -122,17 +122,18 @@ $(document).ready(function () {
     }
 
     function observeCountdownElement() {
-        const observer = new MutationObserver(() => {
+        const $expirationTimeElement = $('#expiration-time');
+        if ($expirationTimeElement.length && $expirationTimeElement.data('created-at')) {
+            startCountdownTimer($expirationTimeElement);
+            return;
+        }
+    
+        setTimeout(() => {
             const $expirationTimeElement = $('#expiration-time');
             if ($expirationTimeElement.length && $expirationTimeElement.data('created-at')) {
                 startCountdownTimer($expirationTimeElement);
-                observer.disconnect();
             }
-        });
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true
-        });
+        }, 1000); 
     }
     observeCountdownElement();
 
@@ -191,4 +192,3 @@ function copyToClipboard(text) {
     } catch (err) { }
     $temp.remove();
 }
-
